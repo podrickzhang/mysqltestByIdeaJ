@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rosam.mysqltest.dao.InsuranceDao">
+
+    <insert id="insertInsurance" parameterType="Insurance">
+        INSERT INTO sqlTest(
+        requestDate,batchNum,orderNum,insuranceNum,productNum,paxType,insuranceOfYear,referenceNum,cardNum,cardType,bussinessType,transationType,district,point,commisionMoney,commisionRate,remark,insertDate,userName,userId,userSex,userAddress)
+        VALUES (
+        #{requestDate},#{batchNum},#{orderNum},#{insuranceNum},#{productNum},#{paxType},#{insuranceOfYear},#{referenceNum},#{cardNum},#{cardType},#{bussinessType},#{transationType},#{district},#{point},#{commisionMoney},#{commisionRate},#{remark},#{insertDate},#{userName},#{userId},#{userSex},#{userAddress}
+        )
+    </insert>
+
+    <insert id="insertBatchData" parameterType="Insurance">
+        INSERT INTO sqlTest(
+         requestDate,batchNum,orderNum,insuranceNum,productNum,paxType,insuranceOfYear,referenceNum,cardNum,cardType,bussinessType,transationType,district,point,commisionMoney,commisionRate,remark,insertDate,userName,userId,userSex,userAddress)
+        )(SELECT requestDate,batchNum,orderNum,insuranceNum,productNum,
+        paxType,insuranceOfYear,referenceNum,cardNum,cardType,
+        bussinessType,transationType,district,point,commisionMoney,
+        commisionRate,remark,insertDate,userName,userId,userSex,userAddress from sqlTest);
+    </insert>
+</mapper>
